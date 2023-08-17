@@ -49,10 +49,21 @@ dependencies:
   permission_handler: ^10.4.3
   ussd_phone_call_sms: ^0.0.3
   account_picker: ^2.1.0
-
+  intl: ^0.18.1
+ 
+ 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+ 
+  test:
+
+  device_calendar:
+    path: './device_calendar-master'
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

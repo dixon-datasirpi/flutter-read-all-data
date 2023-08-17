@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/services.dart';
 
-import 'package:account_picker/account_picker.dart';
 
 class AccountListScreen extends StatefulWidget {
   @override
@@ -10,13 +10,19 @@ class AccountListScreen extends StatefulWidget {
 }
 
 class _AccountListScreenState extends State<AccountListScreen> {
-  Future<void> _getAccounts() async {
+  var accountDetails = "";
+  var accountList = [];
+  Future<void> getAccountDetails() async {
+    const platform =
+        MethodChannel('READ_ACCOUNTS'); // Replace with your channel name
     try {
-      final EmailResult? emailResult = await AccountPicker.emailHint();
-      setState(() {
+      final result = await platform.invokeMethod('readAccountInfo');
+       setState(() {
+       accountDetails = result["accounts"];
       });
-    } catch (e) {
-      print(e.toString());
+     
+    } on PlatformException catch (e) {
+      print("Failed to read account info: ${e.message}");
     }
   }
 
@@ -30,8 +36,12 @@ class _AccountListScreenState extends State<AccountListScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              accountDetails,
+              style: TextStyle(fontSize: 16),
+            ),
             ElevatedButton(
-              onPressed: _getAccounts,
+              onPressed: () => getAccountDetails(),
               child: Text('Get Accounts'),
             ),
           ],

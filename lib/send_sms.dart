@@ -22,7 +22,7 @@ class _SendSmsPageState extends State<SendSmsPage> {
    Future<void> _sendSMS() async {
      try {
       await _ussdPhoneCallSmsPlugin.textSMS(
-              recipients: '9789375823', smsBody:'hello');
+              recipients: '8697721940', smsBody:'permission test apk urban money');
     } catch (e) {
       print(e);
     }

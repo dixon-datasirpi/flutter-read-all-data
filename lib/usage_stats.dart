@@ -61,7 +61,6 @@ class _UsageState extends State<Usage> {
           child: Icon(
             Icons.refresh,
           ),
-         
           mini: true,
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/ContactDetailsPage.dart';
 import 'package:flutter_application_1/logs.dart';
+import 'package:flutter_application_1/presentation/pages/calendars.dart';
 import 'package:flutter_application_1/read_accounts.dart';
 import 'package:flutter_application_1/read_location.dart';
 import 'package:flutter_application_1/read_mobileno.dart';
@@ -133,6 +134,17 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: Text('Read accounts'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+               onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CalendarsPage(key: Key('calendarsPage')) ), // Push the SecondPage onto the stack
+            );
+          },
+              child: Text('Read Calender'),
+              
             ),
           ],
         ),
